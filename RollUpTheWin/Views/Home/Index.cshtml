@@ -1,0 +1,58 @@
+﻿@{
+	ViewBag.Title = "Rrrrroll up the Wwwins";
+}
+
+<h2>Rrrrroll up the Wwwins</h2>
+<hr />
+
+<table id='cups' class='table table-striped'>
+	<thead>
+		<th></th>
+		<th>Wins</th>
+		<th>Total Cups</th>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody></tbody>
+</table>
+
+@Html.ActionLink("GetCups", "GetCups", "Home", null, new { id = "cups_url", style ="display: none" })
+@Html.ActionLink("GetTotals", "GetTotals", "Home", null, new { id = "total_url", style ="display: none" })
+@Html.ActionLink("AddWin", "AddWin", "Home", null, new { id = "add_url", style ="display: none" })
+@Html.ActionLink("AddTotal", "AddTotal", "Home", null, new { id = "add_total_url", style ="display: none" })
+
+<script id='cup_rows' type='text/html'>
+	<# for(var i=0; i < d.length; i++) { 
+		var person = d[i];
+		var ratio = (person.wins/person.total) * 100;
+	#>
+	<tr id='<#= person.id #>'>
+		<td class='name'><#= person.name #></td>
+		<td class='wins'><#= person.wins #><button class='btn btn-success btn-mini add_win'><i class='icon-plus-sign icon-white'></i></button></td>
+		<td class='total'><#= person.total #><button class='btn btn-danger btn-mini add_total'><i class='icon-plus-sign icon-white'></i></td>
+		<td class='bar'>
+			<div class='total'>
+				<span class='wins' style='width: <#= ratio #>%'>&nbsp;</span>&nbsp;
+				<div class='odds'>&nbsp;</div>
+			</div>
+
+		</td>		
+	</tr>
+	<# } #>
+</script>
+
+<script id='cup_footer' type='text/html'>
+	<# var ratio = (wins/total) * 100; #>
+	<tr>
+		<td>&nbsp;</td>
+		<td><#= wins #></td>
+		<td><#= total #></td>
+		<td class='bar'>
+			<div class='total'>
+				<span class='wins' style='width: <#= ratio #>%'>&nbsp;</span>&nbsp;
+				<div class='odds'>&nbsp;</div>
+			</div>
+
+		</td>
+	</tr>
+</script>
