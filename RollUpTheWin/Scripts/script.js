@@ -27,18 +27,18 @@ $.fn.parseTemplate = function (data) {
 	return "< # ERROR: " + err.toString() + " # >";
 }
 
-function getGrid() {
+function getGrid(id) {
 	$.ajax({
 		url: $('a#cups_url').attr('href'),
 		success: function (data) {
 			$('#cups tbody').empty().append($('#cup_rows').parseTemplate({ d: JSON.parse(data) }));
+			$('tr#' + id + ' td').effect("highlight");
 			bindButtons();
 		}
 	})
 }
 
-function getTotals() 
-{
+function getTotals() {
 	$.ajax({
 		url: $('a#total_url').attr('href'),
 		success: function (data) {
@@ -47,8 +47,8 @@ function getTotals()
 	})
 }
 
-function FillTable() {
-	getGrid();
+function FillTable(id) {
+	getGrid(id);
 	getTotals();
 }
 
@@ -61,17 +61,17 @@ function bindButtons() {
 		}
 	);
 
-	$('button.add_win').click(function () {
-		var id = $(this).parent().parent().attr('id');
+		$('button.add_win').click(function () {
+			var id = $(this).parent().parent().attr('id');
 
-		$.ajax({
-			url: $('a#add_url').attr('href'),
-			data: 'id=' + id,
-			success: function () {
-				FillTable();
-			}
+			$.ajax({
+				url: $('a#add_url').attr('href'),
+				data: 'id=' + id,
+				success: function () {
+					FillTable(id);
+				}
+			});
 		});
-	});
 
 	$('button.add_total').click(function () {
 		var id = $(this).parent().parent().attr('id');
@@ -80,7 +80,7 @@ function bindButtons() {
 			url: $('a#add_total_url').attr('href'),
 			data: 'id=' + id,
 			success: function () {
-				FillTable();
+				FillTable(id);
 			}
 		});
 	});
