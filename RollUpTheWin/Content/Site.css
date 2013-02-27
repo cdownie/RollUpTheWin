@@ -256,7 +256,6 @@ span.wins
 	
 	display: inline-block;
 	border-radius: 15px 0 0 15px;
-	float: left;
 }
 
 div.odds 
@@ -292,7 +291,12 @@ button.add_win, button.add_total
 	margin: 0;
 }
 
-td.wins, td.total 
+td.wins, td.total, td.loss 
 {
-	width: 200px;
+	width: 140px;
+}
+
+span.wins, div.odds, div.total 
+{
+	height: 20px;
 }

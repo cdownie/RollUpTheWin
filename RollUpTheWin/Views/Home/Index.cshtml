@@ -9,7 +9,8 @@
 	<thead>
 		<th></th>
 		<th>Wins</th>
-		<th>Total Cups</th>
+		<th>Losses</th>
+		<th>Total</th>
 	</thead>
 	<tfoot>
 	</tfoot>
@@ -29,11 +30,12 @@
 	<tr id='<#= person.id #>'>
 		<td class='name'><#= person.name #></td>
 		<td class='wins'><#= person.wins #><button class='btn btn-success btn-mini add_win'><i class='icon-plus-sign icon-white'></i></button></td>
-		<td class='total'><#= person.total #><button class='btn btn-danger btn-mini add_total'><i class='icon-plus-sign icon-white'></i></td>
+		<td class='loss'><#= person.total - person.wins #><button class='btn btn-danger btn-mini add_total'><i class='icon-plus-sign icon-white'></i></td>
+		<td class='total'><#= person.total#></td>
 		<td class='bar'>
 			<div class='total'>
-				<span class='wins' style='width: <#= ratio #>%'>&nbsp;</span>&nbsp;
-				<div class='odds'>&nbsp;</div>
+				<span class='wins' style='width: <#= ratio #>%'></span>
+				<div class='odds'></div>
 			</div>
 
 		</td>		
@@ -46,11 +48,12 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td><#= wins #></td>
+		<td></td>
 		<td><#= total #></td>
 		<td class='bar'>
 			<div class='total'>
-				<span class='wins' style='width: <#= ratio #>%'>&nbsp;</span>&nbsp;
-				<div class='odds'>&nbsp;</div>
+				<span class='wins' style='width: <#= ratio #>%'></span>
+				<div class='odds'></div>
 			</div>
 
 		</td>

@@ -53,7 +53,7 @@ function FillTable(id) {
 }
 
 function bindButtons() {
-	$('td.wins, td.total').hover(function () {
+	$('td.wins, td.loss').hover(function () {
 		$(this).find('button').show();
 		},
 		function () {

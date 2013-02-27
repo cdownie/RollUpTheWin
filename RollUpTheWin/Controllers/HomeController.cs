@@ -18,7 +18,7 @@ namespace RollUpTheWin.Controllers
 		public JsonResult GetCups()
 		{
 			dynamic cupsTable = new CupTotals();
-			var cups = cupsTable.All();
+			var cups = cupsTable.All(OrderBy: "name");
 
 			var jsonWriter = new JsonFx.Json.JsonWriter();
 			string jsonFX = jsonWriter.Write(cups);
